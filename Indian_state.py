@@ -187,8 +187,53 @@ class stateCode_Analyser():
             print(data)
             return data[1:], data[0]
 
+class State_Code_new_Analyser():
+    '''
+    Description:
+        Is is a class in which we can check sthe data records and header for new csv file
+    Argument:
+        none
+    '''
+    def mismatch_header(header):
+        '''
+        Description:
+            this is function which is use to match the header of state code New.csv
+        Parameter:
+            header as a parameter is passed
+        Return:
+            none    
+        '''
+        try:
+            if(header != ['State','Population','AreaInSqKm','DensityPerSqKm','StateCode']):
+                raise Exception("Header is not matched withCSV")
+            else:
+                return 'Header Matched'
+        except Exception:
+            return False
 
-
+    def SCNiterator(flinename):
+        '''
+        Description:
+            this is a function which is use to read the read the state code New data and store the data into the list
+        Parameter:
+            filename as a parameter is pass
+        Return:
+            return the list as a header and content form    
+        '''
+        with open(os.getenv('SCN'), 'r') as csv_file:
+            try:
+                if csv_file.name != 'StateCode_new.csv':
+                    raise Exception 
+            except Exception:
+                print("File name is incorrect")
+            else:
+                csv_read = csv.reader(csv_file, delimiter = ",")
+                print(csv_read)
+            data = []
+            for line in csv_read:
+                data.append(line)
+            print(data)
+            return data[1:], data[0]
 
 if __name__ == '__main__' :
    
@@ -196,7 +241,6 @@ if __name__ == '__main__' :
     record =  Indian_state_information.records(content)
     print(record)
     counter = Matcher.count(os.getenv('SCD'))
-
     typedata_SCD = Indian_state_information.mismatch_extension(os.getenv('SCD'))
     print(typedata_SCD)
     head_SCD = Indian_state_information.mismatch_header(header)
@@ -208,6 +252,13 @@ if __name__ == '__main__' :
     print(record_sc)
     typedata_SC = Indian_state_information.mismatch_extension(os.getenv('SC'))
     print(typedata_SC)
+    content_SCN,header_SCN = State_Code_new_Analyser.SCNiterator(os.getenv('SCN'))
+    record_SCN=Indian_state_information.records(content_SCN)
+    print(record_SCN)
+    typedata_SCN= Indian_state_information.mismatch_extension(os.getenv('SCN'))
+    print(typedata_SCN)
+    head_SCN = State_Code_new_Analyser.mismatch_header(header_SCN)
+    print(head_SCN)
 
 
     
