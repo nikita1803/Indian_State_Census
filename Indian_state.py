@@ -139,6 +139,56 @@ class state_census_analyser:
             print(data)
             return data[1:], data[0]
 
+class stateCode_Analyser():
+    '''
+    Description:
+        Is is a class in which i create to check the number of records and the the data of state code.csv
+    Argument:
+        none
+    '''
+    def mismatch_header(header):
+        '''
+        Description:
+            this is function which is use to match the header of state code.csv
+        Parameter:
+            header as a parameter is passed
+        Return:
+            none   
+        '''
+        try:
+            if(header != ['SrNo','StateName','TIN','StateCode']):
+                raise Exception("Header is not matched withCSV")
+            else:
+                return 'Header Matched'
+        except Exception:
+            return False
+
+    def SCAiterator(flinename):
+        '''
+        Description:
+            this is a function which is use to read the read the state code data and store the data into the list
+        Parameter:
+            filename as a parameter is pass
+        Return:
+            return the list as a header and content form   
+        '''
+        with open(os.getenv('SC'), 'r') as csv_file:
+            try:
+                if csv_file.name != 'StateCode.csv':
+                    raise Exception 
+            except Exception:
+                print("File name is incorrect")
+            else:
+                csv_read = csv.reader(csv_file, delimiter = ",")
+                print(csv_read)
+            data = []
+            for line in csv_read:
+                data.append(line)
+            print(data)
+            return data[1:], data[0]
+
+
+
 
 if __name__ == '__main__' :
    
@@ -151,7 +201,14 @@ if __name__ == '__main__' :
     print(typedata_SCD)
     head_SCD = Indian_state_information.mismatch_header(header)
     print(head_SCD)
-    
+    content_sc,header_sc=stateCode_Analyser.SCAiterator(os.getenv('SC'))
+    head_SC = stateCode_Analyser.mismatch_header(header_sc)
+    print(head_SC)
+    record_sc =  Indian_state_information.records(content_sc)
+    print(record_sc)
+    typedata_SC = Indian_state_information.mismatch_extension(os.getenv('SC'))
+    print(typedata_SC)
+
 
     
     
