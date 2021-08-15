@@ -82,5 +82,18 @@ class Test_State_Census_Data(unittest.TestCase , Exception):
         '''
         self.assertEqual(record_sc, 37)
 
+    def test_sad_test_case_SC(self):
+        '''
+        Description:
+            this is a function which is use to check that the exception is raised or not
+        Parameter:
+            self parameter is pass
+        Return:
+            none
+        '''
+        SAD1=Indian_state.Matcher.matcher(record_sc, 39)
+        with self.assertRaises(Exception):
+            self.assertTrue(SAD1)
+            
 if __name__ == '__main__': 
     unittest.main()
