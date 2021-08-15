@@ -108,6 +108,12 @@ class Matcher(Indian_state_information):
             print('Records mismatched')
             return False
 class state_census_analyser:
+    '''
+    Description:
+        Is is a class in which we can store the data into the list
+    Argument:
+        no argument
+    '''
     def SCAiterator(filename):
         '''
         Description:
@@ -134,7 +140,6 @@ class state_census_analyser:
             return data[1:], data[0]
 
 
-
 if __name__ == '__main__' :
    
     content,header = state_census_analyser.SCAiterator(os.getenv('SCD'))
@@ -146,8 +151,6 @@ if __name__ == '__main__' :
     print(typedata_SCD)
     head_SCD = Indian_state_information.mismatch_header(header)
     print(head_SCD)
-   
-
     
 
     
