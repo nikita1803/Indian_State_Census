@@ -107,6 +107,19 @@ class Test_State_Census_Data(unittest.TestCase , Exception):
         typedata = Indian_state.Indian_state_information.mismatch_extension(os.getenv('SC'))
         with self.assertRaises(Exception):
             self.assertEqual(typedata, '.pdf')
+
+    def test_header_check_SC(self):
+        '''
+        Description:
+            this is a function which is use to check the heder of the data
+        Parameter:
+            self parameter is pass
+        Return:
+            none
+        '''
+        head = Indian_state.stateCode_Analyser.mismatch_header(header_sc)
+        with self.assertRaises(Exception):
+            self.assertEqual(head, ' Matched')
                     
 if __name__ == '__main__': 
     unittest.main()
