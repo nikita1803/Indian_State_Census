@@ -33,6 +33,17 @@ def test_sad_test_case_SCD():
         '''
         SAD = Indian_state.Matcher.matcher(record, 22)
         assert SAD == False
+def test_type_error_SCD():
+        '''
+        Description:
+            this is a function which is use to check the type of data
+        Parameter:
+            none
+        Return:
+            none
+        '''
+        typedata = Indian_state.Indian_state_information.mismatch_extension('Statecode.json')
+        assert typedata == False
 
 
 
