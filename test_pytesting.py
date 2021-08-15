@@ -22,7 +22,17 @@ def test_Happy_test_case_SCN():
             none
         '''
         assert record== 29
-
+def test_sad_test_case_SCD(): 
+        '''
+        Description:
+            this is a function which is use to check that exception is raised or not
+        Parameter:
+            none
+        Return:
+            none
+        '''
+        SAD = Indian_state.Matcher.matcher(record, 22)
+        assert SAD == False
 
 
 
