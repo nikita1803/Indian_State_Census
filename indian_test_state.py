@@ -30,6 +30,5 @@ class Test_State_Census_Data(unittest.TestCase , Exception):
         '''
         self.assertEqual(record, 29)
 
-    
 if __name__ == '__main__': 
     unittest.main()
