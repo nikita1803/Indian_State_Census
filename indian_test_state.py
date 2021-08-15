@@ -42,5 +42,18 @@ class Test_State_Census_Data(unittest.TestCase , Exception):
         with self.assertRaises(Exception):
             SAD=Indian_state.Matcher.matcher(record,22)
             self.assertTrue(SAD)
+
+    def test_type_error_SCD(self):
+        '''
+        Description:
+            this is a function which is use to check the type of the file 
+        Parameter:
+            self parameter is pass
+        Return:
+            none
+        '''
+        typedata = Indian_state.Indian_state_information.mismatch_extension(os.getenv('SCD'))
+        with self.assertRaises(Exception):
+            self.assertEqual(typedata, '.pdf')
 if __name__ == '__main__': 
     unittest.main()
